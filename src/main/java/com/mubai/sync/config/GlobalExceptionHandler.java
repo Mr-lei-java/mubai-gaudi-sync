@@ -4,6 +4,7 @@ package com.mubai.sync.config;
 import com.mubai.sync.bean.ResponseBean;
 import com.mubai.sync.enums.ConstantResultCode;
 import com.mubai.sync.util.ExceptionUtils;
+import com.mubai.sync.exception.BusinessException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.TypeMismatchException;
@@ -11,10 +12,13 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -145,13 +149,20 @@ public class GlobalExceptionHandler {
         if(exp instanceof TypeMismatchException) {
             return new ResponseBean<>(ConstantResultCode.VALID_FAIL, "参数类型不匹配");
         }
+        if(exp instanceof HttpRequestMethodNotSupportedException) {
+            return new ResponseBean<>(ConstantResultCode.VALID_FAIL, "请求方式错误");
+        }
+        if(exp instanceof MissingServletRequestParameterException) {
+            return new ResponseBean<>(ConstantResultCode.VALID_FAIL, "输入参数不全");
+        }
         if(exp instanceof HttpMessageNotReadableException) {
             return new ResponseBean<>(ConstantResultCode.VALID_FAIL, "参数格式不支持");
         }
+
         //返回自定义信息格式
         ResponseBean result = new ResponseBean<>(ConstantResultCode.ERROR, "未知异常，请联系管理员");
         logger.error(ExceptionUtils.getStackTrace(exp));
+
         return result;
     }
-
 }

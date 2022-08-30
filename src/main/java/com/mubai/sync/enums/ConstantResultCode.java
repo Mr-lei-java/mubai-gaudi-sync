@@ -16,15 +16,16 @@ public class ConstantResultCode {
     public static final Integer RESULT_FAIL = 7;
     public static final Integer LOGIN_FAIL = 10001;
 
-    public static final Map<Integer, String> MESSAGE = new HashMap<Integer, String>();
+    public static final Map<Integer, String> Message = new HashMap<Integer, String>();
+
     static {
-        MESSAGE.put(OK, "Ok");
-        MESSAGE.put(ERROR, "服务器发生错误，请联系管理员");
-        MESSAGE.put(TOKEN_ERROR, "用户未登录或超时，请重新登录");
-        MESSAGE.put(NO_PERMISSION, "您的账号没有此权限");
-        MESSAGE.put(LOGIN_FAIL, "用户不存在或密码错误");
-        MESSAGE.put(VALID_FAIL, "请检查参数或关联数据");
-        MESSAGE.put(RESULT_FAIL, "查询失败，请重试");
-        MESSAGE.put(VALID_FAIL_REFRESH, "请检查参数或关联数据");
+        Message.put(OK, "Ok");
+        Message.put(ERROR, "服务器发生错误，请联系管理员");
+        Message.put(TOKEN_ERROR, "用户未登录或超时，请重新登录");
+        Message.put(NO_PERMISSION, "您的账号没有此权限");
+        Message.put(LOGIN_FAIL, "用户不存在或密码错误");
+        Message.put(VALID_FAIL, "请检查参数或关联数据");
+        Message.put(RESULT_FAIL, "查询失败，请重试");
+        Message.put(VALID_FAIL_REFRESH, "请检查参数或关联数据");
     };
 }
