@@ -1,10 +1,11 @@
 package com.mubai.sync.config;
 
 
+import com.mubai.sync.aop.AspectLog;
 import com.mubai.sync.bean.ResponseBean;
 import com.mubai.sync.enums.ConstantResultCode;
-import com.mubai.sync.util.ExceptionUtils;
 import com.mubai.sync.exception.BusinessException;
+import com.mubai.sync.util.ExceptionUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.TypeMismatchException;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.List;
  */
 @RestControllerAdvice(basePackages = {"com.mubai.sync.controller"})
 public class GlobalExceptionHandler {
-    private final Log logger = LogFactory.getLog(GlobalExceptionHandler.class);
+    private final Log logger = LogFactory.getLog(AspectLog.class);
 
     /**
      * Get方式参数验证异常
