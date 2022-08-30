@@ -1,8 +1,8 @@
 package com.mubai.sync.controller;
 
-import com.anji.plus.gaea.exception.BusinessException;
 import com.mubai.sync.bean.ResponseBean;
 import com.mubai.sync.enums.ConstantResultCode;
+import com.mubai.sync.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;

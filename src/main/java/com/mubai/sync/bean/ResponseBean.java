@@ -31,7 +31,7 @@ public class ResponseBean<T>{
     }
     public ResponseBean(Integer errorCode, T result) {
         this.errorCode = errorCode;
-        this.errorMsg = ConstantResultCode.MESSAGE.get(errorCode);
+        this.errorMsg = ConstantResultCode.Message.get(errorCode);
         this.result = result;
     }
     /**

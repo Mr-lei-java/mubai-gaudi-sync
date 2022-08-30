@@ -3,6 +3,9 @@ package com.mubai.sync.exception;
 
 import com.mubai.sync.enums.ConstantResultCode;
 
+/**
+ * @author leitengfei
+ */
 public class BusinessException extends RuntimeException {
 	private static final long serialVersionUID = -6549529146682180496L;
     private Integer code;
