@@ -1,6 +1,7 @@
 package com.mubai.sync.controller;
 
 import com.mubai.sync.bean.ResponseBean;
+import com.mubai.sync.bean.order.OrderBean;
 import com.mubai.sync.enums.ConstantResultCode;
 import com.mubai.sync.exception.BusinessException;
 import org.slf4j.Logger;
@@ -23,10 +24,8 @@ public class UpdateWebController {
      * 同步销售订单
      */
     @RequestMapping(value = "/private/updateOrderList", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public ResponseBean updateOrderList(@RequestBody Map<String, String> map) throws BusinessException {
-        String beginTime = map.get("beginTime");
-        String endTime = map.get("endTime");
-        String orderCode = map.get("orderCode");
+    public ResponseBean updateOrderList(@RequestBody OrderBean  orderBean) throws BusinessException {
+        logger.info("orderBean{}",orderBean.toString());
         return new ResponseBean<>(ConstantResultCode.OK, "OK");
     }
 
